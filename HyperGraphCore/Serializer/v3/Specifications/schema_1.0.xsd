@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Il faudrait dans l'idéal utiliser xs:appInfo pour rajouter des règles de validation
+telles que la présence d'un guid ciblés là où nécessaire.
+-->
+<xs:schema targetNamespace="https://louis.lecailliez.net/schema/leger/xml"
+    elementFormDefault="qualified"
+    xmlns="https://louis.lecailliez.net/schema/leger/xml"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="file">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="header"
+                    minOccurs="1"
+                    maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="version"
+                          fixed="1.0"
+                          use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="types"
+                    minOccurs="1"
+                    maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="type"
+                          minOccurs="1"
+                          maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="short_name"
+                                type="nonEmptyString"/>
+                    <xs:element name="description"
+                                type="xs:string"/>
+                  </xs:sequence>
+                  <xs:attribute name="kind"
+                                use="required"
+                                type="vertexOrEdge"/>
+                  <xs:attribute name="internal_id"
+                                use="required"
+                                type="xs:nonNegativeInteger"/>
+                  <xs:attribute name="public_id"
+                                use="required"
+                                type="guid"/>
+                  <xs:attribute name="direct_content"
+                                use="optional"
+                                type="boolean"/>
+                  <xs:attribute name="is_oriented"
+                                use="optional"
+                                type="boolean"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="nodes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="node"
+                          minOccurs="1"
+                          maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="canonical_name"
+                                type="xs:string"/>
+                    <xs:element name="content"
+                                type="xs:string"/>
+                  </xs:sequence>
+                <xs:attribute name="type"
+                              use="required"
+                              type="xs:nonNegativeInteger"/>
+                <xs:attribute name="lang"
+                              use="required">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                     Must be formed on the basis of an iso 639-3 individual language code.
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:minLength value="3"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="internal_id"
+                              use="required"
+                              type="xs:nonNegativeInteger"/>
+                <xs:attribute name="public_id"
+                              use="required"
+                              type="guid"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="edges">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="edge"
+                          minOccurs="1"
+                          maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="target"
+                                minOccurs="1"
+                                maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="type"
+                                      use="required"
+                                      type="internalOrExternal"/>
+                        <xs:attribute name="id"
+                                      use="required"
+                                      type="guidOrNonNegativeInteger"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="annotations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="annotation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="target">
+                      <xs:complexType>
+                        <xs:attribute name="type"
+                                      use="required"
+                                      type="internalOrExternal"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="namespace"
+                                use="optional"
+                                type="guid"/>
+                  <xs:attribute name="key"
+                                use="required"
+                                type="xs:string"/>
+                  <xs:attribute name="value"
+                                use="required"
+                                type="guidOrNonNegativeInteger"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="boolean">
+    <xs:restriction base="xs:boolean">
+      <xs:pattern value="true"/>
+      <xs:pattern value="false"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="guidOrNonNegativeInteger">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+"/>
+      <xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="nonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="vertexOrEdge">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="vertex"/>
+      <xs:enumeration value="edge"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="internalOrExternal">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internal"/>
+      <xs:enumeration value="external"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

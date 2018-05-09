@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<file>
+  <header version="1.0" />
+  <types>
+    <type kind="vertex" internal_id="0" direct_content="true" public_id="22cde85e-7ceb-4245-9f45-f827d2b3b800">
+      <short_name>French Word</short_name>
+      <description><![CDATA[A word of the French language.]]></description>
+    </type>
+  </types>
+  <nodes>
+    <node type="0" lang="fra" internal_id="0" public_id="a8287107-81f2-4ca5-907a-48411fe6fa88">
+      <canonical_name><![CDATA[avion]]></canonical_name>
+      <content><![CDATA[avion]]></content>
+    </node>
+    <node type="0" lang="fra" internal_id="1" public_id="c0f96b18-4ca7-4b13-9ada-92519d4f033b">
+      <canonical_name><![CDATA[porter]]></canonical_name>
+      <content><![CDATA[porter]]></content>
+    </node>
+  </nodes>
+  <annotations>
+    <annotation namespace="" key="pos" value="nom">
+      <target type="internal" id="0"/>
+    </annotation>
+    <annotation namespace="" key="pos" value="verbe">
+      <target type="external" id="c0f96b18-4ca7-4b13-9ada-92519d4f033b"/>
+    </annotation>
+  </annotations>
+</file>

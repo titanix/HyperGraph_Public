@@ -1,0 +1,9 @@
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/bin/Debug/DemoCodeFiles.exe
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/bin/Debug/DemoCodeFiles.pdb
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/bin/Debug/HyperGraph.dll
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/bin/Debug/HyperGraph.pdb
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/bin/Debug/HyperGraph.dll.config
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/obj/Debug/DemoCodeFiles.csprojResolveAssemblyReference.cache
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/obj/Debug/DemoCodeFiles.csproj.CoreCompileInputs.cache
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/obj/Debug/DemoCodeFiles.exe
+/Users/Louis/Offline_Code/HyperGraph/DemoCodeFiles/obj/Debug/DemoCodeFiles.pdb

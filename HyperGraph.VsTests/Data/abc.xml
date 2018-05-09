@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<file>
+  <header version="1.0" />
+  <types>
+    <type kind="vertex" internal_id="0" direct_content="true" public_id="c4de509d-ea2d-415f-82d0-c6b7f5da1586">
+      <short_name>Test Node</short_name>
+      <description><![CDATA[]]></description>
+    </type>
+    <type kind="edge" internal_id="1" is_oriented="false" public_id="90028204-b1fd-4e43-8967-3f6403fa8beb">
+      <short_name>Test Edge</short_name>
+      <description><![CDATA[A]]></description>
+    </type>
+  </types>
+  <nodes>
+    <node type="0" lang="eng" internal_id="0" public_id="72f0cf40-7921-4434-ab79-5ccbfc258dad">
+      <canonical_name><![CDATA[A]]></canonical_name>
+      <content><![CDATA[A]]></content>
+    </node>
+    <node type="0" lang="eng" internal_id="1" public_id="9b101442-6b8b-4a8e-a93a-3069cdaef924">
+      <canonical_name><![CDATA[B]]></canonical_name>
+      <content><![CDATA[B]]></content>
+    </node>
+    <node type="0" lang="eng" internal_id="2" public_id="277988d7-b46c-48b5-9362-9e76b22e73ca">
+      <canonical_name><![CDATA[C]]></canonical_name>
+      <content><![CDATA[C]]></content>
+    </node>
+  </nodes>
+  <edges>
+    <!-- X -->
+    <edge type="1" public_id="0ab6ed78-21dd-4b76-9c49-70110a62d088">
+      <target type="internal" id="0" />
+      <target type="internal" id="1" />
+    </edge>
+    <!-- Y -->
+    <edge type="1" public_id="9e4a0ff4-45b8-49b7-b17e-7374c46ef83d">
+      <target type="internal" id="0" />
+      <target type="internal" id="2" />
+    </edge>
+    <!-- Z -->
+    <edge type="1" public_id="005077f4-5b42-42be-a4f6-3cbe3d00d876">
+      <target type="internal" id="1" />
+      <target type="internal" id="2" />
+    </edge>
+  </edges>
+  <annotations>
+    <!-- point de vue de A -->
+    <annotation namespace="72f0cf40-7921-4434-ab79-5ccbfc258dad" key="order" value="1">
+      <target type="external" id="0ab6ed78-21dd-4b76-9c49-70110a62d088"/>
+    </annotation>
+    <annotation namespace="72f0cf40-7921-4434-ab79-5ccbfc258dad" key="order" value="2">
+      <target type="external" id="9e4a0ff4-45b8-49b7-b17e-7374c46ef83d"/>
+    </annotation>
+    <!-- point de vue de B -->
+    <annotation namespace="9b101442-6b8b-4a8e-a93a-3069cdaef924" key="order" value="1">
+      <target type="external" id="005077f4-5b42-42be-a4f6-3cbe3d00d876"/>
+    </annotation>
+    <annotation namespace="9b101442-6b8b-4a8e-a93a-3069cdaef924" key="order" value="2">
+      <target type="external" id="0ab6ed78-21dd-4b76-9c49-70110a62d088"/>
+    </annotation>
+    <!-- point de vue de C -->
+    <annotation namespace="277988d7-b46c-48b5-9362-9e76b22e73ca" key="order" value="1">
+      <target type="external" id="9e4a0ff4-45b8-49b7-b17e-7374c46ef83d"/>
+    </annotation>
+    <annotation namespace="277988d7-b46c-48b5-9362-9e76b22e73ca" key="order" value="2">
+      <target type="external" id="005077f4-5b42-42be-a4f6-3cbe3d00d876"/>
+    </annotation>
+  </annotations>
+</file>

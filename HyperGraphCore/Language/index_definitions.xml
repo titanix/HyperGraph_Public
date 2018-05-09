@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<indexes>
+	<index
+		name="PinyinIndex"
+		lang="man"/>
+	<index
+		name="HepburnIndex"
+		lang="jap"/>
+	<index
+		name="KunreiIndex"
+		lang="jap"/>
+</indexes>

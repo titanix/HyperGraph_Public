@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<file>
+  <header version="1.0"/>
+  <resources>
+    <file location="remote">http://louis.lecailliez.net/dl/misc.xml</file>
+    <file location="local">/Users/Louis/Data/dico/demo.xml</file>
+  </resources>
+  <types>
+    <type kind="vertex" internal_id="0" public_id="6fa9621e-2bd8-4594-8d12-7b6961cbe7fa" direct_content="true">
+      <short_name>TypeExemple</short_name>
+      <description><![CDATA[Description longue du type]]></description>
+    </type>
+    <type kind="edge" internal_id="1" public_id="e1b62a52-a032-425e-8953-8327652b7122" is_oriented="false">
+      <short_name>Edge Example Name</short_name>
+      <description><![CDATA[Description longue du type]]></description>
+      <definition>
+        <target type="external" id="6fa9621e-2bd8-4594-8d12-7b6961cbe7fa"/>
+        <target type="external" id="6fa9621e-2bd8-4594-8d12-7b6961cbe7fa"/>
+      </definition>
+    </type>
+  </types>
+  <nodes>
+    <node type="0" internal_id="0" public_id="7f168cca-e730-4933-8b3b-f9cc293bc145" lang="fra">
+      <canonical_name><![CDATA[Contenu de démonstration]]></canonical_name>
+      <content><![CDATA[Vrai contenu de démonstration]]></content>
+    </node>
+  </nodes>
+  <edges>
+    <edge type="1" public_id="c1043baa-378e-4561-acea-4fb641d27896">
+      <target type="internal" id="0"/>
+      <target type="external" id="7f168cca-e730-4933-8b3b-f9cc293bc145"/>
+    </edge>
+  </edges>
+  <annotations>
+    <annotation namespace="" key="pos" value="noun">
+      <target type="internal" id="0"/>
+    </annotation>
+  </annotations>
+</file>
