@@ -9,56 +9,39 @@
 		margin: 0 auto;
 		padding: 45px;
 	}
-
-	@media (max-width: 767px) {
-		.markdown-body {
-			padding: 15px;
-		}
+<pre><code>@media (max-width: 767px) {
+	.markdown-body {
+		padding: 15px;
 	}
+}
+</code></pre>
 </style>
-
 <div class="markdown-body">
-
-# Overview
-
-This library provides an **adjacency list based graph** implementation. Edges are represented by explicit object and can link more than two nodes.
-
-This library is developped as part of an attempt to model and develop user-facing dictionaries with graphs. It is generic enough to be used for other purposes. You can consult the following publications for more details about the data model:
-
-Lecailliez, L, Mangeot, M. (2018). AsiaLex 2018 publication (to be published).
-
-Lecailliez, L. (2016). [Pour une modélisation de dictionnaires de japonais sous forme de graphe.](https://louis.lecailliez.net/dl/memoire_m2_jap_Lecailliez.pdf) [Towards Graph Modeling of Japanese dictionaries] Master thesis, Paris Diderot.
-
-# Main Types
-
-The ```Graph``` class implementing ```IGraph``` contains the vertices and edges of the graph and provides access to annotations.
-A graph contains two kind of objects : vertices, implementing the ```IVertex``` interface and edges, implementing ```IEdge```. Both ```IVertex``` and ```IEdge```
-derivate from ```IGraphObject```.
-
-Each graph object is associated to an edge or vertex type by linking a ```GraphObjectTypeInfo``` instance which regroup informations about the type.
-
+<h1>Overview</h1>
+<p>This library provides an <strong>adjacency list based graph</strong> implementation. Edges are represented by explicit object and can link more than two nodes.</p>
+<p>This library is developped as part of an attempt to model and develop user-facing dictionaries with graphs. It is generic enough to be used for other purposes. You can consult the following publications for more details about the data model:</p>
+<p>Lecailliez, L, Mangeot, M. (2018). AsiaLex 2018 publication (to be published).</p>
+<p>Lecailliez, L. (2016). <a href="https://louis.lecailliez.net/dl/memoire_m2_jap_Lecailliez.pdf">Pour une modélisation de dictionnaires de japonais sous forme de graphe.</a> [Towards Graph Modeling of Japanese dictionaries] Master thesis, Paris Diderot.</p>
+<h1>Main Types</h1>
+<p>The <code>Graph</code> class implementing <code>IGraph</code> contains the vertices and edges of the graph and provides access to annotations.
+A graph contains two kind of objects : vertices, implementing the <code>IVertex</code> interface and edges, implementing <code>IEdge</code>. Both <code>IVertex</code> and <code>IEdge</code>
+derivate from <code>IGraphObject</code>.</p>
+<p>Each graph object is associated to an edge or vertex type by linking a <code>GraphObjectTypeInfo</code> instance which regroup informations about the type.</p>
 <table>
     <tr><th>Interface</th><th>Implementation</th></tr>
     <tr><td><code>IGraph</code></td><td><code>Graph</code></td></tr>
     <tr><td><code>IVertex</code></td><td><code>Vertex&lt;T&gt;</code></td></tr>
     <tr><td><code>IEdge</code></td><td><code>HyperEdge</code></td></tr>
 <table>
-
 </div>
-
-# Tutorial \#1 Creating a Simple Graph with One Node
-
-In this tutorial, we will create a simple graph containing one node, labeled "Node 1".
+<h1>Tutorial #1 Creating a Simple Graph with One Node</h1>
+<p>In this tutorial, we will create a simple graph containing one node, labeled &quot;Node 1&quot;.
 Creating the simpliest non-empty graph containing on node involves three steps: (1) creating a data type for the node, (2) instanciating a node, (3) creating the graph and (4) adding
-the vertex to the graph.
-
+the vertex to the graph.</p>
 <img src="schema_1.png"/>
-
-## Vertex Type Creation
-
-First, we create a new vertex type. The following example use the longest constructor available and fills all the object description. The first argument is a ```Guid``` but the constructor here
-is a overload allowing a string to be passed instead.
-
+<h2>Vertex Type Creation</h2>
+<p>First, we create a new vertex type. The following example use the longest constructor available and fills all the object description. The first argument is a <code>Guid</code> but the constructor here
+is a overload allowing a string to be passed instead.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">GraphObjectTypeInfo</span> demoVertexType = </li>
@@ -72,22 +55,16 @@ is a overload allowing a string to be passed instead.
         <li data-lineNumber="8" class="Alternate">demoVertexType.Description = <span class="StringLiteral">&quot;This type is the first type of the tutorial.&quot;</span>;</li>
     </ul>
 </div>
-
-## Node Instanciation
-
-Now that we have a type, we can create a vertex instance. It basically take a string as content, wrapped in a ```SerializableString```. This wrapper can be switched for another when dealing with
-more complex content encoding.
-
+<h2>Node Instanciation</h2>
+<p>Now that we have a type, we can create a vertex instance. It basically take a string as content, wrapped in a <code>SerializableString</code>. This wrapper can be switched for another when dealing with
+more complex content encoding.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">IVertex</span> demoVertex = <span class="Keyword">new</span> Vertex<<span class="InferredIdentifier">SerializableString</span>>(demoVertexType, <span class="Keyword">new</span> <span class="InferredIdentifier">SerializableString</span>(<span class="StringLiteral">&quot;Node 1&quot;</span>));</li>
     </ul>
 </div>
-
-## Graph Creation (step 3 &amp; 4)
-
-The graph instanciation is easy and doesn't require additional explanation.
-
+<h2>Graph Creation (step 3 &amp; 4)</h2>
+<p>The graph instanciation is easy and doesn't require additional explanation.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">IGraph</span> graph = <span class="Keyword">new</span> <span class="InferredIdentifier">Graph</span>();</li>
@@ -95,19 +72,12 @@ The graph instanciation is easy and doesn't require additional explanation.
     </ul>
 </div>
 &nbsp;
-
-Voilà! The graph is now live and populated with one vertex. In the next tutorial, we will see how we can make use of the graph.
-
-[See the code file](DemoCodeFiles/Tutorial1.cs).
-
-# Tutorial \#2 Creating Non-Oriented Edges
-
-I this tutorial, we will extend the previous graph with two more nodes named "Node 2" and "Node 3". Two edges will be added between the first node and the two new ones.
-
+<p>Voilà! The graph is now live and populated with one vertex. In the next tutorial, we will see how we can make use of the graph.</p>
+<p><a href="DemoCodeFiles/Tutorial1.cs">See the code file</a>.</p>
+<h1>Tutorial #2 Creating Non-Oriented Edges</h1>
+<p>I this tutorial, we will extend the previous graph with two more nodes named &quot;Node 2&quot; and &quot;Node 3&quot;. Two edges will be added between the first node and the two new ones.</p>
 <img src="schema_2.png"/>
-
-Here two steps are required: (1) creating the edge type and (2) creating the edge itself.
-
+<p>Here two steps are required: (1) creating the edge type and (2) creating the edge itself.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="5"><span class="InferredIdentifier">IVertex</span> demoVertex2 = <span class="Keyword">new</span> Vertex<<span class="InferredIdentifier">SerializableString</span>>(demoVertexType, <span class="Keyword">new</span> <span class="InferredIdentifier">SerializableString</span>(<span class="StringLiteral">&quot;Node 2&quot;</span>));</li>
@@ -117,15 +87,10 @@ Here two steps are required: (1) creating the edge type and (2) creating the edg
     </ul>
 </div>
 &nbsp;
-
-&#9888;&nbsp; <span style="color:orange;">Don't forget to add the nodes to the graph!</span> The rest of this tutorial would work without theses operations, but the number of vertices stored by the graph would be incorrect. The file generated by serializing such a graph would be missing the nodes as well.
-
-## Edge Type Creation
-
-Creating an edge type use the same class ```GraphObjectTypeInfo```seen before. We will however use a shorter constructor. By default, an edge is created as non-oriented.
-Be aware of using a different guid value! If you don't, both type will be seen as identical be the system.
-
-
+<p>⚠  <span style="color:orange;">Don't forget to add the nodes to the graph!</span> The rest of this tutorial would work without theses operations, but the number of vertices stored by the graph would be incorrect. The file generated by serializing such a graph would be missing the nodes as well.</p>
+<h2>Edge Type Creation</h2>
+<p>Creating an edge type use the same class <code>GraphObjectTypeInfo</code>seen before. We will however use a shorter constructor. By default, an edge is created as non-oriented.
+Be aware of using a different guid value! If you don't, both type will be seen as identical be the system.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="11"><span class="InferredIdentifier">GraphObjectTypeInfo</span> demoEdgeType =</li>
@@ -134,11 +99,8 @@ Be aware of using a different guid value! If you don't, both type will be seen a
                 <li data-lineNumber="14">        <span class="InferredIdentifier">GraphObjectType</span>.Edge);</li>
     </ul>
 </div>
-
-## Edge Instanciation
-
-Edges, in contrary to nodes, are created by the Graph object. This restricted exists so the graph can keep a reference to every edges it contains.
-
+<h2>Edge Instanciation</h2>
+<p>Edges, in contrary to nodes, are created by the Graph object. This restricted exists so the graph can keep a reference to every edges it contains.</p>
 <div class="CodeContainer">
     <ul>
             <li data-lineNumber="17">graph.CreateEdge(demoEdgeType, demoVertex, demoVertex2);</li>
@@ -146,32 +108,21 @@ Edges, in contrary to nodes, are created by the Graph object. This restricted ex
     </ul>
 </div>
 &nbsp;
-
-Bravo! The graph now contains three nodes and two edges. In the next tutorial, we will see how we can make use of the graph.
-
-[See the code file](DemoCodeFiles/Tutorial2.cs).
-
-# Tutorial \#3 Querying &amp; Traversing the Graph
-
-Now that we have a graph, we may want to perform search inside it.
-
-## Indexed Strings
-
-The graph maintains various indexes. By searching a node in the graph, it will rebuild its indexes if they are dirty; that is if a node was added since the last build. By default, it will
-create an index named "" (the empty string) populated with the indexed strings collected from its vertices. By default, a node returns one indexed string corresponding to its content.
-
-The code line below show that our "Node 1" node will return "Node 1" as its indexed string.
-
+<p>Bravo! The graph now contains three nodes and two edges. In the next tutorial, we will see how we can make use of the graph.</p>
+<p><a href="DemoCodeFiles/Tutorial2.cs">See the code file</a>.</p>
+<h1>Tutorial #3 Querying &amp; Traversing the Graph</h1>
+<p>Now that we have a graph, we may want to perform search inside it.</p>
+<h2>Indexed Strings</h2>
+<p>The graph maintains various indexes. By searching a node in the graph, it will rebuild its indexes if they are dirty; that is if a node was added since the last build. By default, it will
+create an index named &quot;&quot; (the empty string) populated with the indexed strings collected from its vertices. By default, a node returns one indexed string corresponding to its content.</p>
+<p>The code line below show that our &quot;Node 1&quot; node will return &quot;Node 1&quot; as its indexed string.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">Console</span>.WriteLine(<span class="StringLiteral">&quot;Default indexed string of Node 1:&quot;</span> + demoVertex);</li>
     </ul>
 </div>
-
-## Performing a Search
-
-We can search one of our node by its content using the ```SearchNode```method. The first argument of the method is the index on which the search is performed. It is an empty string here, which is the default index name.
-
+<h2>Performing a Search</h2>
+<p>We can search one of our node by its content using the <code>SearchNode</code>method. The first argument of the method is the index on which the search is performed. It is an empty string here, which is the default index name.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">List</span><<span class="InferredIdentifier">IVertex</span>> results = graph.SearchNode(<span class="StringLiteral">""</span>, <span class="StringLiteral">&quot;Node 1&quot;</span>);</li>
@@ -181,22 +132,16 @@ We can search one of our node by its content using the ```SearchNode```method. T
     </ul>
 </div>
 &nbsp;
-
-The list result contains one element: a reference to the first node of our graph. Now let's see how we can access the nodes it links.
-
-## Traversing the Graph
-
-Each node and edge object exposes a ```Links``` property which is a list of ```IEdge``` instances. They materialise the relationship that exists between nodes.
-Our first node have, as expected, two edges in his list of links.
-
+<p>The list result contains one element: a reference to the first node of our graph. Now let's see how we can access the nodes it links.</p>
+<h2>Traversing the Graph</h2>
+<p>Each node and edge object exposes a <code>Links</code> property which is a list of <code>IEdge</code> instances. They materialise the relationship that exists between nodes.
+Our first node have, as expected, two edges in his list of links.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="5"><span class="InferredIdentifier">Console</span>.WriteLine(<span class="StringLiteral">"Number of links from Node 1: "</span> + demoVertex.Links.Count);</ul>
 </div>
 &nbsp;
-
-Access to the linked nodes is made in two steps: first retrieving the link object, then using it the find the linked node.
-
+<p>Access to the linked nodes is made in two steps: first retrieving the link object, then using it the find the linked node.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1">List<<span class="InferredIdentifier">IVertex</span>> linkedNodes = <span class="Keyword">new</span> List<<span class="InferredIdentifier">IVertex</span>>();</li>
@@ -214,13 +159,9 @@ Access to the linked nodes is made in two steps: first retrieving the link objec
     </ul>
 </div>
 &nbsp;
-
-The code below needs a few comments. First, an edge can actually link both vertices or other edges, that's why ```GetLinkedObjects``` is called with an overload that will return only node instances. Secondly, the list of returned object will contains every nodes that the edge links, including the source node; even when the edge is oriented. This is why we need a filtering condition. This is a feature of the library, is allow to traverse the graph in both directions.
-
-## Get Successors (the Easy Way)
-
-The code previously seen can be used to deal with every kind of nodes and edges. Most of the time, this isn't necessary. If you only need to get successors (or predecessors) of an oriented binary edge, you can use an helper method designed to retrieve them easily.
-
+<p>The code below needs a few comments. First, an edge can actually link both vertices or other edges, that's why <code>GetLinkedObjects</code> is called with an overload that will return only node instances. Secondly, the list of returned object will contains every nodes that the edge links, including the source node; even when the edge is oriented. This is why we need a filtering condition. This is a feature of the library, is allow to traverse the graph in both directions.</p>
+<h2>Get Successors (the Easy Way)</h2>
+<p>The code previously seen can be used to deal with every kind of nodes and edges. Most of the time, this isn't necessary. If you only need to get successors (or predecessors) of an oriented binary edge, you can use an helper method designed to retrieve them easily.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">OrientedBinaryEdgeTypeInfo</span> relationship = </li>
@@ -229,21 +170,14 @@ The code previously seen can be used to deal with every kind of nodes and edges.
     </ul>
 </div>
 &nbsp;
-
-You need first to create a ```OrientedBinaryEdgeTypeInfo``` with the same identifier than the relationship you want to follow. Then, pass it as the argument of ```Successors```.
-
-[See the code file](DemoCodeFiles/Tutorial3.cs).
-
-# Tutorial #4 Writing and Reading a File
-
-A graph can be saved as an XML file. The file can be manually edited if needed, and loaded back. Note that big graphs can take a signifiant time to load, even on a
-desktop computer. You'll need ```using Leger.IO;``` at the top of your file to use the short class names.
-
-## Generating a Graph File
-
-Creating a graph file is straightforward: a ```GraphXmlSerializer``` instance is used to get an XML document representation (```Sytem.Xml.Linq.XDocument``` class)
-which is then saved to a given path.
-
+<p>You need first to create a <code>OrientedBinaryEdgeTypeInfo</code> with the same identifier than the relationship you want to follow. Then, pass it as the argument of <code>Successors</code>.</p>
+<p><a href="DemoCodeFiles/Tutorial3.cs">See the code file</a>.</p>
+<h1>Tutorial #4 Writing and Reading a File</h1>
+<p>A graph can be saved as an XML file. The file can be manually edited if needed, and loaded back. Note that big graphs can take a signifiant time to load, even on a
+desktop computer. You'll need <code>using Leger.IO;</code> at the top of your file to use the short class names.</p>
+<h2>Generating a Graph File</h2>
+<p>Creating a graph file is straightforward: a <code>GraphXmlSerializer</code> instance is used to get an XML document representation (<code>Sytem.Xml.Linq.XDocument</code> class)
+which is then saved to a given path.</p>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1"><span class="InferredIdentifier">GraphXmlSerializer</span> serializer = <span class="Keyword">new</span> <span class="InferredIdentifier">GraphXmlSerializer</span>();</li>
@@ -251,15 +185,11 @@ which is then saved to a given path.
         <li data-lineNumber="3">xdoc.Save(<span class="StringLiteral">&quot;graph.xml&quot;</span>);</li>
     </ul>
 </div>
-
-## Loading a Graph File
-
-       
+<h2>Loading a Graph File</h2>
 <div class="CodeContainer">
     <ul>
         <li data-lineNumber="1">graph = <span class="InferredIdentifier">GraphXmlDeserializer</span>.GetGraphInstance(<span class="StringLiteral">"graph.xml"</span>, <span class="Keyword">new</span> <span class="InferredIdentifier">FileLoader</span>());</li>
     </ul>
 </div>
 &nbsp;
-
-[See the code file](DemoCodeFiles/Tutorial4.cs).
+<p><a href="DemoCodeFiles/Tutorial4.cs">See the code file</a>.</p>
