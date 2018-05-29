@@ -11,3 +11,7 @@ Lecailliez, L. (2016). [Pour une modélisation de dictionnaires de japonais sous
 # Documentation and Tutorials
 
 See Documentation/Readme.html
+
+# Binary Build
+
+You can get a precompiled dll [from Nuget](https://www.nuget.org/packages/HyperGraph/1.3.2).
