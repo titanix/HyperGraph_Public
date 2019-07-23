@@ -1,0 +1,5 @@
+Pour générer le package :
+dotnet pack HyperGraphNetStandard.csproj /p:PackageVersion=1.5.0
+
+Ici ce n'est pas un fichier .nuspec qui est utilisé, mais un groupe de propriétés dans le .csproj.
+https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli
