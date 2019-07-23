@@ -14,4 +14,4 @@ See Documentation/Readme.html
 
 # Binary Build
 
-You can get a precompiled dll [from Nuget](https://www.nuget.org/packages/HyperGraph/1.3.2).
+You can get a precompiled dll [from Nuget](https://www.nuget.org/packages/HyperGraph/1.10.1).
