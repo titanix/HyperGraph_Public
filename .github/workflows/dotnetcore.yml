@@ -19,5 +19,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: Libraries/HyperGraphNetStandard/bin/Release/netstandard2.0/HyperGraph.dll 
-        path: builds
+        name: HyperGraph.dll 
+        path: Libraries/HyperGraphNetStandard/bin/Release/netstandard2.0/
